@@ -1,0 +1,22 @@
+<div class="card">
+  <img
+    class="card-image"
+    [src]="event().image"
+    [attr.alt]="event().title + '-image'"
+  />
+
+  <div class="card-body">
+    <div class="title-container">
+      <h3>{{ event().title }}</h3>
+      <h4>{{ event().subtitle }}</h4>
+    </div>
+
+    <p [innerHTML]="event().description"></p>
+
+    <span class="date"
+      >{{ event().startDate | date }} - {{ event().endDate | date }}</span
+    >
+
+    <button class="action-button">Buy</button>
+  </div>
+</div>

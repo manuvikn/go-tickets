@@ -1,0 +1,7 @@
+<gt-banner
+  title="Find Your Next Exciting Event"
+  subtitle="Explore and Book Tickets to the Best Live Experiences!"
+></gt-banner>
+<gt-catalog-section title="Events">
+  <gt-catalog-grid [eventList]="(eventList$() | async) || []"></gt-catalog-grid>
+</gt-catalog-section>

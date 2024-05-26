@@ -1,0 +1,12 @@
+<nav
+  class="navbar"
+  [ngClass]="{ 'decrease-navbar': decreaseNavbar$() | async }"
+>
+  <ul class="navbar-list">
+    <li class="navbar-list-item">
+      <h1>
+        <a class="navbar-link" href="#"> GoTickets </a>
+      </h1>
+    </li>
+  </ul>
+</nav>

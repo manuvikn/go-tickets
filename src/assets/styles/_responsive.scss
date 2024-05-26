@@ -1,0 +1,6 @@
+// SMALL SCREENS
+@media (max-width: 900px) {
+  gt-catalog-grid .catalog-grid {
+    --grid-columns: 1fr;
+  }
+}
