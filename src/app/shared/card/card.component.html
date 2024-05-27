@@ -7,16 +7,25 @@
 
   <div class="card-body">
     <div class="title-container">
-      <h3>{{ event().title }}</h3>
-      <h4>{{ event().subtitle }}</h4>
+      <div>
+        <h3>{{ event().title }}</h3>
+        <h4>{{ event().subtitle }}</h4>
+      </div>
+
+      <span class="date"
+        >{{ event().startDate | date : "dd/MM/YYYY" }} -
+        {{ event().endDate | date : "dd/MM/YYYY" }}</span
+      >
     </div>
 
     <p [innerHTML]="event().description"></p>
 
-    <span class="date"
-      >{{ event().startDate | date }} - {{ event().endDate | date }}</span
+    <button
+      class="action-button"
+      [routerLink]="['/purchase-details']"
+      [state]="{ eventId: event().id }"
     >
-
-    <button class="action-button">Buy</button>
+      Buy
+    </button>
   </div>
 </div>

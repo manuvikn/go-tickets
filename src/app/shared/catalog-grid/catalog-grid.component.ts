@@ -1,4 +1,9 @@
-import { Component, InputSignal, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  InputSignal,
+  input,
+} from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { Event } from '../../models/event';
 
@@ -22,6 +27,7 @@ import { Event } from '../../models/event';
   }
   `,
   imports: [CardComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatalogGridComponent {
   eventList: InputSignal<Array<Event>> = input([] as Event[]);

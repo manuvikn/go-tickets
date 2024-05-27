@@ -1,0 +1,15 @@
+<gt-catalog-section title="Purchase details">
+  <ng-container *ngIf="shoppingCart$ | async as shoppingCart">
+    <div class="grid">
+      <gt-session-list
+        [eventDetail]="(eventDetail$ | async) || undefined"
+        [sessionsMap]="shoppingCart[eventId() || '']?.sessionsMap"
+      ></gt-session-list>
+
+      <gt-shopping-cart
+        (removeSession)="onRemoveSession($event)"
+        [shoppingCart]="shoppingCart"
+      ></gt-shopping-cart>
+    </div>
+  </ng-container>
+</gt-catalog-section>

@@ -22,9 +22,16 @@
 
     p {
       margin: 0px;
+      flex-grow: 1;
+      margin-bottom: 1em;
     }
 
     .title-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 1em;
+      flex-wrap: wrap;
+
       h3 {
         margin: 0px;
         margin-bottom: 0.3em;
@@ -35,10 +42,8 @@
     }
 
     .date {
-      align-self: flex-end;
       color: var(--primary-color);
       font-weight: 500;
-      flex-grow: 1;
     }
 
     .action-button {

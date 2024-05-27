@@ -1,0 +1,35 @@
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+
+  .title {
+    margin: 0px;
+    margin-bottom: 0.5em;
+  }
+
+  .session-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+
+    .actions-container {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+
+      .trash-icon-wrapper {
+        cursor: pointer;
+
+        img {
+          transition: filter 200ms;
+        }
+
+        &:hover img {
+          filter: brightness(0.5);
+        }
+      }
+    }
+  }
+}

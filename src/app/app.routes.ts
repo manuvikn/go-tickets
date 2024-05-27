@@ -9,6 +9,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'purchase-details',
+    loadComponent: () =>
+      import('./pages/purchase-details/purchase-details-page.component').then(
+        (c) => c.PurchaseDetailsPageComponent
+      ),
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: '',

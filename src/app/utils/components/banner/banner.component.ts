@@ -1,4 +1,9 @@
-import { Component, InputSignal, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  InputSignal,
+  input,
+} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -25,6 +30,7 @@ import { Component, InputSignal, input } from '@angular/core';
   }
   `,
   selector: 'gt-banner',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BannerComponent {
   title: InputSignal<string> = input.required();

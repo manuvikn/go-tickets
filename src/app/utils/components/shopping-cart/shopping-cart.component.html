@@ -1,0 +1,37 @@
+@if (isThereShoppingCart()) {
+<ul class="card-list">
+  @for (event of shoppingCart() | keyvalue; track $index) {
+
+  <li class="cart-item">
+    <h3 class="title">{{ event.value?.title }}</h3>
+    @if (event.value) { @for (session of event.value.sessionsMap | keyvalue;
+    track $index) {
+
+    <div class="session-row">
+      <span class="date">
+        {{ session.key | date : "dd/MM/YYYY" }}
+      </span>
+      <div class="actions-container">
+        <span> x{{ session.value }} </span>
+        <span
+          role="button"
+          tabindex="0"
+          class="trash-icon-wrapper"
+          (click)="onRemoveSession(session.key, event.key)"
+        >
+          <img
+            src="/assets/img/trash.png"
+            width="20"
+            height="20"
+            alt="trash icon"
+          />
+        </span>
+      </div>
+    </div>
+
+    } }
+  </li>
+
+  }
+</ul>
+}

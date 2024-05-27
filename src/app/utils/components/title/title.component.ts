@@ -1,4 +1,9 @@
-import { Component, InputSignal, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  InputSignal,
+  input,
+} from '@angular/core';
 
 @Component({
   selector: 'gt-title',
@@ -17,6 +22,7 @@ import { Component, InputSignal, input } from '@angular/core';
     margin: 0px;
   }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TitleComponent {
   title: InputSignal<string> = input.required();

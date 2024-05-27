@@ -1,0 +1,14 @@
+.card-list {
+  margin: 0px;
+  padding: 2em;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+
+  li {
+    all: unset;
+  }
+}

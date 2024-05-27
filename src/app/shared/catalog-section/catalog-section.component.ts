@@ -1,4 +1,9 @@
-import { Component, InputSignal, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  InputSignal,
+  input,
+} from '@angular/core';
 import { TitleComponent } from '../../utils/components/title/title.component';
 
 @Component({
@@ -14,6 +19,7 @@ import { TitleComponent } from '../../utils/components/title/title.component';
   }
   `,
   imports: [TitleComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatalogSectionComponent {
   title: InputSignal<string> = input.required();

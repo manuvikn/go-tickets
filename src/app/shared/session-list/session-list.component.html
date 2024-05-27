@@ -1,0 +1,27 @@
+<div class="session-list-container">
+  <ul class="card-list">
+    @if (!eventDetail()) {
+
+    <li>
+      <h2 class="error-message">EVENT INFO NOT FOUND</h2>
+    </li>
+
+    } @else { @for (session of eventDetail()?.sessions; track $index) {
+
+    <li class="session-item">
+      <p class="date-block">
+        <strong>Date:</strong> {{ session.date | date : "dd/MM/YYYY" }},
+        <strong>Availability:</strong>
+        {{ session.availabiltiy }}
+      </p>
+
+      <gt-counter
+        [max]="session.availabiltiy"
+        [value]="sessionsMap()![session.date.getTime()]"
+        (buttonClick)="updateShoppingCart($event, session)"
+      ></gt-counter>
+    </li>
+
+    } }
+  </ul>
+</div>

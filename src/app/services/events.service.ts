@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { Event } from '../models/event';
 import { EventDTO, EventDetailDTO } from '../interfaces/event-dto.interface';
 import { EventDetail } from '../models/event-detail';
@@ -15,8 +15,8 @@ export class EventsService {
   // PROVIDERS
   private _httpClient: HttpClient = inject(HttpClient);
 
-  //Get all events
-  getEvents(): Observable<Array<Event>> {
+  // GET ALL THE EVENTS
+  getEvents$(): Observable<Array<Event>> {
     return this._httpClient
       .get<EventDTO[]>(`${this.BASE_URL}events.json`)
       .pipe(
@@ -26,14 +26,17 @@ export class EventsService {
       );
   }
 
-  // Get event detail by ID
-  getEventInfo(id: number): Observable<EventDetail> {
+  // GET EVENT DETAIL BY ID
+  getEventInfo$(id: number): Observable<EventDetail> {
     return this._httpClient
       .get<EventDetailDTO>(`${this.BASE_URL}event-info-${id}.json`)
       .pipe(
         map<EventDetailDTO, EventDetail>(
           (event: EventDetailDTO) => new EventDetail(event)
-        )
+        ),
+        catchError((_) => {
+          throw new Error('EVENT INFO NOT FOUND');
+        })
       );
   }
 }
