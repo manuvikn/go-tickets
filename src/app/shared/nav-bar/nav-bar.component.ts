@@ -9,6 +9,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { Observable, debounceTime, fromEvent, map } from 'rxjs';
 import { InputTextComponent } from '../../utils/components/input-text/input-text.component';
+import { EventsService } from '../../services/events.service';
 
 @Component({
   standalone: true,
@@ -21,8 +22,16 @@ import { InputTextComponent } from '../../utils/components/input-text/input-text
 export class NavBarComponent {
   // PROVIDERS
   private _document: Document = inject(DOCUMENT);
+  private _eventsService: EventsService = inject(EventsService);
 
   // VARIABLES
+  hasSearchbar: InputSignal<boolean> = input(true, {
+    // RESET SEARCHBAR OBSERVABLE WHEN NOT DISPLAYED
+    transform: (val) => {
+      if (!val) this._eventsService.filterEventsByKeyWords('');
+      return val;
+    },
+  });
   title: InputSignal<string> = input('');
 
   decreaseNavbar$: Observable<boolean> = fromEvent(
@@ -40,6 +49,6 @@ export class NavBarComponent {
   );
 
   onInputEvent(prompt: string): void {
-    console.log(prompt);
+    this._eventsService.filterEventsByKeyWords(prompt);
   }
 }

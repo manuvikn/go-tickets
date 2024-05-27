@@ -45,20 +45,6 @@
       color: var(--primary-color);
       font-weight: 500;
     }
-
-    .action-button {
-      padding: 1em 4em;
-      border-radius: 100px;
-      border: none;
-      background: var(--primary-color);
-      color: var(--white);
-      cursor: pointer;
-      transition: filter 500ms;
-
-      &:hover {
-        filter: brightness(0.8);
-      }
-    }
   }
 
   &:hover {

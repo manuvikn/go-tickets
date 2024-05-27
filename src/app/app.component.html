@@ -1,4 +1,7 @@
-<gt-nav-bar [title]="title()"></gt-nav-bar>
+<gt-nav-bar
+  [title]="title()"
+  [hasSearchbar]="(hasSearchbar$ | async) ?? false"
+></gt-nav-bar>
 <main>
   <router-outlet></router-outlet>
 </main>

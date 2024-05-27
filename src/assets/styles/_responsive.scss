@@ -1,7 +1,25 @@
-// SMALL SCREENS
+// MEDIUM SCREENS
 @media (max-width: 900px) {
   gt-catalog-grid .catalog-grid,
   gt-purchase-details-page .grid {
     --grid-columns: 1fr;
+  }
+}
+
+// SMALL SCREENS
+@media (max-width: 550px) {
+  body {
+    font-size: 13px;
+
+    gt-nav-bar .navbar {
+      --navbar-padding: 1em !important;
+
+      .icon-container {
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
   }
 }

@@ -12,3 +12,23 @@
     all: unset;
   }
 }
+
+button.btn {
+  padding: 1em;
+  border-radius: 100px;
+  border: none;
+  background: var(--primary-color);
+  color: var(--white);
+  font-family: var(--paragraph-font);
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 500ms;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+gt-input-text .searchbar {
+  font-family: var(--paragraph-font);
+}

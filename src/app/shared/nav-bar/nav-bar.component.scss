@@ -6,7 +6,9 @@
 }
 
 .navbar {
-  padding: 1em 4em;
+  --navbar-padding: 0.8em 4em;
+
+  padding: var(--navbar-padding);
   border-radius: var(--border-radius);
   background-color: var(--white);
   margin: 1em;
@@ -31,7 +33,14 @@
 
       .navbar-link {
         all: unset;
+      }
+
+      .icon-container {
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        transition: width 500ms, height 500ms;
       }
     }
 
@@ -49,5 +58,12 @@
   ::ng-deep .searchbar {
     padding: 0.4em !important;
     transform: none !important;
+  }
+
+  .icon-container {
+    img {
+      width: 2em;
+      height: 2em;
+    }
   }
 }

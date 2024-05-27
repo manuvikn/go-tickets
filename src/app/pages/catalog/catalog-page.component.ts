@@ -8,7 +8,7 @@ import { BannerComponent } from '../../utils/components/banner/banner.component'
 import { CatalogSectionComponent } from '../../shared/catalog-section/catalog-section.component';
 import { CatalogGridComponent } from '../../shared/catalog-grid/catalog-grid.component';
 import { EventsService } from '../../services/events.service';
-import { BehaviorSubject, Observable, combineLatestWith, map } from 'rxjs';
+import { Observable, combineLatestWith, map } from 'rxjs';
 import { Event } from '../../models/event';
 import { AsyncPipe } from '@angular/common';
 
@@ -30,12 +30,13 @@ export class CatalogPageComponent implements OnInit {
   private _eventsService: EventsService = inject(EventsService);
 
   // OBSERVABLES
-  searchEvent$: BehaviorSubject<string> = new BehaviorSubject('');
   eventList$: Observable<Array<Event>> | undefined;
+  filterEventsByPrompt$: Observable<string> =
+    this._eventsService.getFilterEvents$();
 
   ngOnInit(): void {
     this.eventList$ = this._eventsService.getEvents$().pipe(
-      combineLatestWith(this.searchEvent$),
+      combineLatestWith(this.filterEventsByPrompt$),
       map(([o1, o2]) =>
         o1
           // FILTERING BY THE SEARCH PROMPT
@@ -53,9 +54,5 @@ export class CatalogPageComponent implements OnInit {
           )
       )
     );
-  }
-
-  onSearchEvent({ value }: any): void {
-    this.searchEvent$.next(String(value).trim().toLowerCase());
   }
 }

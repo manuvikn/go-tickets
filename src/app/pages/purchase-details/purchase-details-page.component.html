@@ -1,4 +1,8 @@
-<gt-catalog-section title="Purchase details">
+<gt-catalog-section
+  title="Purchase details"
+  [hasButton]="true"
+  buttonLabel="Go back"
+>
   <ng-container *ngIf="shoppingCart$ | async as shoppingCart">
     <div class="grid">
       <gt-session-list

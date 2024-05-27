@@ -11,11 +11,17 @@ import { Event } from '../../models/event';
   standalone: true,
   selector: 'gt-catalog-grid',
   template: `
+    @if (eventList().length) {
     <div class="catalog-grid">
       @for (event of eventList(); track $index) {
       <gt-card [event]="event"></gt-card>
       }
     </div>
+    } @else {
+    <h2 class="no-results-text">
+      Oops! No events match your search. Try again with different terms.
+    </h2>
+    }
   `,
   styles: `
   .catalog-grid {
@@ -24,6 +30,10 @@ import { Event } from '../../models/event';
     gap: 2em;
     justify-content: center;
     align-content: center;
+  }
+
+  .no-results-text {
+    text-align: center;
   }
   `,
   imports: [CardComponent],
