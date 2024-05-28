@@ -4,8 +4,6 @@ import {
   EventEmitter,
   InputSignal,
   Output,
-  Signal,
-  computed,
   input,
 } from '@angular/core';
 import { ShoppingCart } from '../../../interfaces/shopping-cart.interface';
@@ -21,9 +19,6 @@ import { DatePipe, JsonPipe, KeyValuePipe } from '@angular/common';
 })
 export class ShoppingCartComponent {
   shoppingCart: InputSignal<ShoppingCart> = input({});
-  isThereShoppingCart: Signal<boolean> = computed(
-    () => !!Object.keys(this.shoppingCart()).length
-  );
 
   @Output() removeSession: EventEmitter<{
     sessionId: string;

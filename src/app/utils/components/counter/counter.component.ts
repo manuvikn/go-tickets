@@ -51,7 +51,7 @@ import {
             cursor: pointer;
             font-weight: 800;
             line-height: 0;
-            transition: filter 200ms;
+            transition: filter 200ms, background 200ms;
 
             &:hover {
                 filter: brightness(0.8);

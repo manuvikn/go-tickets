@@ -13,7 +13,7 @@
   background-color: var(--white);
   margin: 1em;
   box-shadow: var(--box-shadow);
-  transition: padding 500ms, margin 500ms;
+  transition: padding 500ms, margin 500ms, background-color 200ms;
 
   .navbar-list {
     padding: 0px;
@@ -48,6 +48,11 @@
       width: 100%;
       justify-self: center;
     }
+
+    .navbar-list-item.theme-toggle-wrapper {
+      justify-self: flex-end;
+      grid-column-start: 3;
+    }
   }
 }
 
@@ -55,9 +60,17 @@
   padding: 0.2em 0.5em;
   margin: 0.5em;
 
-  ::ng-deep .searchbar {
-    padding: 0.4em !important;
-    transform: none !important;
+  ::ng-deep {
+    .searchbar {
+      padding: 0.4em !important;
+      transform: none !important;
+    }
+    .theme-toggle-button {
+      padding: 1px !important;
+      i {
+        font-size: 15px !important;
+      }
+    }
   }
 
   .icon-container {

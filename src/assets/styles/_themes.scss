@@ -1,0 +1,18 @@
+// DARK THEME
+body.dark-theme {
+  --primary-color: rgb(65 132 172);
+  --primary-text-color: rgb(255 255 255);
+  --white: #3e3f46;
+  --shadow-color: rgba(32, 51, 73, 0.3);
+  --bg-color: rgb(0 35 127);
+  --secondary-text-color: #c1c1c1;
+
+  button,
+  input {
+    --white: var(--primary-text-color);
+  }
+
+  .trash-icon-wrapper img {
+    filter: invert(1);
+  }
+}

@@ -49,9 +49,12 @@ export class PurchaseDetailsPageComponent implements OnInit {
   eventId: WritableSignal<number | undefined> = signal(undefined);
 
   // OBSERVABLES
+  eventDetail$: Observable<EventDetail> | undefined;
   shoppingCart$: Observable<ShoppingCart> =
     this._shoppingCartService.getShoppingCart$();
-  eventDetail$: Observable<EventDetail> | undefined;
+  hasShoppingCart$: Observable<boolean> = this.shoppingCart$.pipe(
+    map((cart) => !!Object.keys(cart).length)
+  );
 
   constructor() {
     const { eventId = 0 } = this._router.getCurrentNavigation()?.extras

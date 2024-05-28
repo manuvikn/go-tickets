@@ -19,7 +19,18 @@
           width: 40px;
           height: 40px;
         }
+        h1 {
+          display: none;
+        }
       }
+    }
+
+    gt-card .card-description {
+      display: none;
+    }
+
+    footer {
+      font-size: 9px !important;
     }
   }
 }

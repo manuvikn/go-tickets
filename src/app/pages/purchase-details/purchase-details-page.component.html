@@ -10,10 +10,13 @@
         [sessionsMap]="shoppingCart[eventId() || '']?.sessionsMap"
       ></gt-session-list>
 
+      @if (hasShoppingCart$ | async) {
       <gt-shopping-cart
+        class="animation__fadeIn"
         (removeSession)="onRemoveSession($event)"
         [shoppingCart]="shoppingCart"
       ></gt-shopping-cart>
+      }
     </div>
   </ng-container>
 </gt-catalog-section>

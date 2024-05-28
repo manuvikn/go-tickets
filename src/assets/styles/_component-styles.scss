@@ -22,7 +22,7 @@ button.btn {
   font-family: var(--paragraph-font);
   font-weight: 600;
   cursor: pointer;
-  transition: filter 500ms;
+  transition: filter 500ms, color 200ms, background-color 200ms;
 
   &:hover {
     filter: brightness(0.8);
@@ -31,4 +31,22 @@ button.btn {
 
 gt-input-text .searchbar {
   font-family: var(--paragraph-font);
+}
+
+div,
+hr,
+ul,
+footer {
+  transition: background-color 200ms;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a,
+strong {
+  transition: color 200ms;
 }

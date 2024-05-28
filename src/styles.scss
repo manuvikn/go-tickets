@@ -11,8 +11,10 @@ body {
   margin: 0px;
   display: flex;
   flex-direction: column;
-  background-color: rgba(248, 210, 109, 0.3);
+  background-color: var(--bg-color);
   font-family: var(--paragraph-font);
+  color: var(--secondary-text-color);
+  transition: background 200ms, background-color 200ms;
 
   app-root {
     position: relative;

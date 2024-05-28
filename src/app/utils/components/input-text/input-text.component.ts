@@ -37,7 +37,7 @@ import { Subscription, debounceTime, fromEvent, map } from 'rxjs';
         border: none;
         box-shadow: inset var(--box-shadow);
         color: var(--white);
-        transition: padding 500ms, transform 200ms;
+        transition: padding 500ms, transform 200ms, background-color 200ms;
 
         &::placeholder {
             color: var(--white);
