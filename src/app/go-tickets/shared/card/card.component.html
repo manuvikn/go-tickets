@@ -1,6 +1,6 @@
 <div class="card">
   <img
-    [routerLink]="['/purchase-details']"
+    [routerLink]="['purchase-details']"
     [state]="{ eventId: event().id }"
     class="card-image"
     [src]="event().image"
@@ -11,13 +11,13 @@
     <div class="title-container">
       <div>
         <h3
-          [routerLink]="['/purchase-details']"
+          [routerLink]="['purchase-details']"
           [state]="{ eventId: event().id }"
         >
           {{ event().title }}
         </h3>
         <h4
-          [routerLink]="['/purchase-details']"
+          [routerLink]="['purchase-details']"
           [state]="{ eventId: event().id }"
         >
           {{ event().subtitle }}
@@ -34,7 +34,7 @@
 
     <button
       class="btn"
-      [routerLink]="['/purchase-details']"
+      [routerLink]="['purchase-details']"
       [state]="{ eventId: event().id }"
     >
       Buy

@@ -1,7 +1,7 @@
 <nav class="navbar" [ngClass]="{ 'decrease-navbar': decreaseNavbar$ | async }">
   <ul class="navbar-list">
     <li class="navbar-list-item">
-      <div class="icon-container" [routerLink]="['/']">
+      <div class="icon-container" (click)="navigateToHome()">
         <img
           src="/assets/img/go-tickets-logo.png"
           alt="Go tickets logo"

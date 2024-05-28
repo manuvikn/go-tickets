@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Voltaire;
+  src: url("./fonts/voltaire.ttf");
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url("./fonts/montserrat.ttf");
+}
+
+::ng-deep {
+  body {
+    // COLORS
+    --primary-color: rgba(254, 113, 85, 255);
+    --primary-text-color: rgba(32, 51, 73, 255);
+    --secondary-text-color: #000000;
+    --white: #ffffff;
+    --shadow-color: rgba(32, 51, 73, 0.3);
+    --bg-color: rgba(248, 210, 109, 0.3);
+
+    // FONTS
+    --title-font: "Voltaire", sans-serif;
+    --paragraph-font: "Montserrat", sans-serif;
+
+    // BORDER
+    --border-radius: 10px;
+    --rounded-border-radius: 50%;
+
+    // SHADOW
+    --box-shadow: 2px 2px 8px 0px var(--shadow-color);
+
+    // GRID
+    --grid-columns: repeat(2, 1fr);
+  }
+}

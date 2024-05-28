@@ -6,7 +6,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, debounceTime, fromEvent, map } from 'rxjs';
 import { InputTextComponent } from '../../utils/components/input-text/input-text.component';
 import { EventsService } from '../../services/events.service';
@@ -17,18 +17,14 @@ import { ThemeToggleComponent } from '../../utils/components/theme-toggle/theme-
   selector: 'gt-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrl: 'nav-bar.component.scss',
-  imports: [
-    NgClass,
-    AsyncPipe,
-    RouterLink,
-    InputTextComponent,
-    ThemeToggleComponent,
-  ],
+  imports: [NgClass, AsyncPipe, InputTextComponent, ThemeToggleComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavBarComponent {
   // PROVIDERS
   private _document: Document = inject(DOCUMENT);
+  private _router: Router = inject(Router);
+  private _route: ActivatedRoute = inject(ActivatedRoute);
   private _eventsService: EventsService = inject(EventsService);
 
   // VARIABLES
@@ -57,5 +53,9 @@ export class NavBarComponent {
 
   onInputEvent(prompt: string): void {
     this._eventsService.filterEventsByKeyWords(prompt);
+  }
+
+  navigateToHome(): void {
+    this._router.navigate(['./'], { relativeTo: this._route });
   }
 }

@@ -1,0 +1,54 @@
+::ng-deep {
+  .card-list {
+    margin: 0px;
+    padding: 2em;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+
+    li {
+      all: unset;
+    }
+  }
+
+  button.btn {
+    padding: 1em;
+    border-radius: 100px;
+    border: none;
+    background: var(--primary-color);
+    color: var(--white);
+    font-family: var(--paragraph-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 500ms, color 200ms, background-color 200ms;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  gt-input-text .searchbar {
+    font-family: var(--paragraph-font);
+  }
+
+  div,
+  hr,
+  ul,
+  footer {
+    transition: background-color 200ms;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  span,
+  a,
+  strong {
+    transition: color 200ms;
+  }
+}

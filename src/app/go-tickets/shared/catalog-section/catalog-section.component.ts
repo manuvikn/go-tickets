@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { TitleComponent } from '../../utils/components/title/title.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'gt-catalog-section',
@@ -41,12 +41,15 @@ export class CatalogSectionComponent {
   title: InputSignal<string> = input.required();
   hasButton: InputSignal<boolean> = input(false);
   buttonLabel: InputSignal<string> = input('');
-  redirectTo: InputSignal<string> = input('/');
+  redirectTo: InputSignal<string> = input('');
 
   // PROVIDERS
   private _router: Router = inject(Router);
+  private _route: ActivatedRoute = inject(ActivatedRoute);
 
   onButtonClick(): void {
-    this._router.navigateByUrl(this.redirectTo());
+    this._router.navigate([`../${this.redirectTo()}`], {
+      relativeTo: this._route,
+    });
   }
 }
