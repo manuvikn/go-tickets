@@ -56,27 +56,29 @@
   }
 }
 
-.decrease-navbar {
-  padding: 0.2em 0.5em;
-  margin: 0.5em;
+@media (min-width: 550px) {
+  .decrease-navbar {
+    padding: 0.2em 0.5em;
+    margin: 0.5em;
 
-  ::ng-deep {
-    .searchbar {
-      padding: 0.4em !important;
-      transform: none !important;
-    }
-    .theme-toggle-button {
-      padding: 1px !important;
-      i {
-        font-size: 15px !important;
+    ::ng-deep {
+      .searchbar {
+        padding: 0.4em !important;
+        transform: none !important;
+      }
+      .theme-toggle-button {
+        padding: 1px !important;
+        i {
+          font-size: 15px !important;
+        }
       }
     }
-  }
 
-  .icon-container {
-    img {
-      width: 2em;
-      height: 2em;
+    .icon-container {
+      img {
+        width: 2em;
+        height: 2em;
+      }
     }
   }
 }
