@@ -76,8 +76,7 @@ export class PurchaseDetailsPageComponent implements OnInit {
 
   // INIT THE COMPONENT AND MANAGING EXCEPTIONS
   private _initComponent(): void {
-    if (!this.eventId()) this.errorAlert();
-    else
+    if (this.eventId())
       this.eventDetail$ = this._eventsService
         .getEventInfo$(this.eventId() as number)
         .pipe(
