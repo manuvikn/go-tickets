@@ -6,7 +6,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogSectionComponent } from '../../shared/catalog-section/catalog-section.component';
 import { EventsService } from '../../services/events.service';
 import Swal from 'sweetalert2';
@@ -41,6 +41,7 @@ import { ShoppingCartComponent } from '../../utils/components/shopping-cart/shop
 export class PurchaseDetailsPageComponent implements OnInit {
   // PROVIDERS
   private _router: Router = inject(Router);
+  private _route: ActivatedRoute = inject(ActivatedRoute);
   private _eventsService: EventsService = inject(EventsService);
   private _shoppingCartService: ShoppingCartService =
     inject(ShoppingCartService);
@@ -57,11 +58,16 @@ export class PurchaseDetailsPageComponent implements OnInit {
   );
 
   constructor() {
-    const { eventId = 0 } = this._router.getCurrentNavigation()?.extras
-      .state as {
-      eventId: string;
-    };
-    this.eventId.set(Number(eventId));
+    const currentNavigation = this._router.getCurrentNavigation();
+
+    if (currentNavigation) {
+      const { eventId = 0 } = currentNavigation.extras.state as {
+        eventId: string;
+      };
+      this.eventId.set(Number(eventId));
+    } else {
+      this._router.navigate(['../'], { relativeTo: this._route });
+    }
   }
 
   ngOnInit(): void {
@@ -71,24 +77,24 @@ export class PurchaseDetailsPageComponent implements OnInit {
   // INIT THE COMPONENT AND MANAGING EXCEPTIONS
   private _initComponent(): void {
     if (!this.eventId()) this.errorAlert();
-
-    this.eventDetail$ = this._eventsService
-      .getEventInfo$(this.eventId() as number)
-      .pipe(
-        // SORTING SESSIONS BY DATE ASC
-        map((eventDetail: EventDetail) => {
-          eventDetail.sessions.sort(
-            ({ date: a }, { date: b }) =>
-              (a?.getTime() || 0) - (b?.getTime() || 0)
-          );
-          return eventDetail;
-        }),
-        // DISPLAYING ERROR ALERT WHEN NO FOUND DATA
-        catchError((e) => {
-          this.errorAlert(e.message);
-          return of(null);
-        })
-      ) as Observable<EventDetail>;
+    else
+      this.eventDetail$ = this._eventsService
+        .getEventInfo$(this.eventId() as number)
+        .pipe(
+          // SORTING SESSIONS BY DATE ASC
+          map((eventDetail: EventDetail) => {
+            eventDetail.sessions.sort(
+              ({ date: a }, { date: b }) =>
+                (a?.getTime() || 0) - (b?.getTime() || 0)
+            );
+            return eventDetail;
+          }),
+          // DISPLAYING ERROR ALERT WHEN NO FOUND DATA
+          catchError((e) => {
+            this.errorAlert(e.message);
+            return of(null);
+          })
+        ) as Observable<EventDetail>;
   }
 
   // REMOVING SESSIONS BY CLICKING ON TRASH BUTTON
